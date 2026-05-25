@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝐒𝐌𝐔𝐑𝐅 𝐗𝐌𝐃 | WABOT</title>
+
+    <meta name="description" content="𝐒𝐌𝐔𝐑𝐅 𝐗𝐌𝐃 | WABOT">
+    <meta property="og:title" content="𝐒𝐌𝐔𝐑𝐅 𝐗𝐌𝐃 | WABOT">
+    <meta property="og:description" content="𝐒𝐌𝐔𝐑𝐅 𝐗𝐌𝐃 is Active and Running">
+    <meta property="og:image" content="/botimage.png">
+    <link rel="icon" href="/botimage.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0a000f;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated purple background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(120, 0, 180, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(80, 0, 140, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 50%, rgba(60, 0, 100, 0.2) 0%, transparent 70%);
+            z-index: 0;
+            animation: bgPulse 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0%   { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            padding: 40px 30px;
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(120, 0, 200, 0.15);
+            border: 1px solid rgba(160, 0, 255, 0.4);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #bf7fff;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #9b30ff;
+            box-shadow: 0 0 8px #9b30ff, 0 0 16px #9b30ff;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.2; }
+        }
+
+        /* Main bot name */
+        .bot-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.8em, 5vw, 3.2em);
+            font-weight: 900;
+            text-align: center;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #ffffff 0%, #d580ff 40%, #9b30ff 70%, #6600cc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 18px rgba(155, 48, 255, 0.6));
+            animation: nameGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes nameGlow {
+            0%   { filter: drop-shadow(0 0 10px rgba(155, 48, 255, 0.4)); }
+            100% { filter: drop-shadow(0 0 30px rgba(155, 48, 255, 0.9)); }
+        }
+
+        /* Divider */
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #9b30ff, transparent);
+            border-radius: 2px;
+        }
+
+        /* Info card */
+        .info-card {
+            background: rgba(50, 0, 80, 0.35);
+            border: 1px solid rgba(155, 48, 255, 0.3);
+            border-radius: 14px;
+            padding: 16px 30px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            min-width: 280px;
+        }
+
+        .info-card .time {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #d580ff;
+            letter-spacing: 3px;
+        }
+
+        .info-card .date-day {
+            font-size: 0.95em;
+            color: #aa88cc;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* Owner / footer */
+        .owner {
+            font-size: 0.9em;
+            color: #7a5a99;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .owner span {
+            color: #9b30ff;
+        }
+
+        /* Links row */
+        .links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(100, 0, 160, 0.2);
+            border: 1px solid rgba(155, 48, 255, 0.35);
+            border-radius: 8px;
+            padding: 7px 16px;
+            color: #c080ff;
+            text-decoration: none;
+            font-size: 0.82em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .links a:hover {
+            background: rgba(155, 48, 255, 0.35);
+            border-color: #9b30ff;
+            color: #fff;
+        }
+
+        /* Footer caption */
+        .caption {
+            font-size: 0.75em;
+            color: #4a2e66;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="status-badge">
+            <div class="status-dot"></div>
+            Deployment Successful
+        </div>
+
+        <div class="bot-name">𝐒𝐌𝐔𝐑𝐅 𝐗𝐌𝐃</div>
+
+        <div class="divider"></div>
+
+        <div class="info-card">
+            <div class="time" id="clock">00:00:00</div>
+            <div class="date-day" id="dateday">Loading...</div>
+        </div>
+
+        <div class="owner">Owner: <span>Smurf</span></div>
+
+        <div class="links">
+            <a href="https://youtube.com/shorts/__clfjY_yfM?si=IdzEUKek8Xhw0vLo" target="_blank">▶ YouTube</a>
+            <a href="https://whatsapp.com/channel/0029Vb6lNd511ulWbxu1cT3A" target="_blank">📢 Channel</a>
+            <a href="#" target="_blank">⌨ GitHub</a>
+        </div>
+
+        <div class="caption">©2025 𝐒𝐌𝐔𝐑𝐅 𝐗𝐌𝐃 V5 — powered by smurf</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            const day = days[now.getDay()];
+            const date = now.toLocaleDateString('en-GB');
+            document.getElementById('dateday').textContent = `${day}, ${date}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
