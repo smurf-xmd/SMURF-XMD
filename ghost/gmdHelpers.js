@@ -79,12 +79,12 @@ const createContext = async (userJid, options = {}) => {
     const botName = (await getSetting("BOT_NAME")) || "SMURF-XMD";
     const botPic =
         (await getSetting("BOT_PIC")) ||
-        "https://gitcdn.giftedtech.co.ke/image/AZO_image.jpg";
+        "https://files.catbox.moe/w9qqg3.jpg";
     const newsletterJid =
         (await getSetting("NEWSLETTER_JID")) || "120363404552894723@newsletter";
     const newsletterUrl =
         (await getSetting("NEWSLETTER_URL")) ||
-        "https://whatsapp.com/channel/0029Vb6lNd511ulWbxu1cT3A";
+        "https://whatsapp.com/channel/0029Vb6jxRD7IUYbQfokIu2s";
 
     return {
         contextInfo: {
@@ -117,7 +117,7 @@ const createContext2 = async (userJid, options = {}) => {
     const botName = (await getSetting("BOT_NAME")) || "SMURF-XMD";
     const botPic =
         (await getSetting("BOT_PIC")) ||
-        "https://gitcdn.giftedtech.co.ke/image/AZO_image.jpg";
+        "https://files.catbox.moe/w9qqg3.jpg";
     const newsletterJid =
         (await getSetting("NEWSLETTER_JID")) || "120363404552894723@newsletter";
 
