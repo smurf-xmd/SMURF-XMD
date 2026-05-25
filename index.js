@@ -73,7 +73,7 @@ const {
     setupConnectionHandler,
     setupGroupEventsListeners,
     initializeLidStore,
-} = require("./dark");
+} = require("./ghost");
 
 const {
     saveAntiDelete,
