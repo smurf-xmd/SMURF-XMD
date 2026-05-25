@@ -1,7 +1,7 @@
 const { getSetting } = require("./database/settings");
 
 async function getContextInfo(mentionedJid = []) {
-    const botName = await getSetting("BOT_NAME") || "𓅓 𝐃𝐀𝐑𝐊 𝐋𝐎𝐑𝐃𓅣._XMD";
+    const botName = await getSetting("BOT_NAME") || "SMURF-XMD";
     const channelJid = await getSetting("NEWSLETTER_JID") || "120363404552894723@newsletter";
     return {
         mentionedJid,
