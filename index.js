@@ -1,5 +1,5 @@
 require("events").EventEmitter.defaultMaxListeners = 960;
-require("./dark/gmdHelpers");
+require("./ghost/gmdHelpers");
 
 const {
     default: giftedConnect,
@@ -81,7 +81,7 @@ const {
     removeAntiDelete,
     startCleanup,
     SQLiteStore,
-} = require('./dark/database/messageStore');
+} = require('./ghost/database/messageStore');
 
 const config = require("./config");
 const googleTTS = require("google-tts-api");
@@ -101,7 +101,7 @@ async function resolveRealJid(Gifted, jid) {
     if (!jid) return null;
     if (!jid.endsWith('@lid')) return jid;   // already real
     try {
-        const { getLidMapping } = require('./dark/connection/groupCache');
+        const { getLidMapping } = require('./ghost/connection/groupCache');
         const cached = getLidMapping(jid);
         if (cached) return cached;
     } catch (_) {}
@@ -110,7 +110,7 @@ async function resolveRealJid(Gifted, jid) {
         if (resolved && !resolved.endsWith('@lid')) return resolved;
     } catch (_) {}
     try {
-        const { getLidMappingFromDb } = require('./dark/database/lidMapping');
+        const { getLidMappingFromDb } = require('./ghost/database/lidMapping');
         const fromDb = await getLidMappingFromDb(jid);
         if (fromDb) return fromDb;
     } catch (_) {}
@@ -125,7 +125,7 @@ let store;
 
 logger.level = "silent";
 app.use(express.static("dark"));
-app.get("/", (req, res) => res.sendFile(__dirname + "/dark/gifted.html"));
+app.get("/", (req, res) => res.sendFile(__dirname + "/ghost/gifted.html"));
 app.get("/health", (req, res) =>
     res.status(200).json({ status: "alive", uptime: process.uptime() }),
 );
@@ -145,8 +145,8 @@ setInterval(async () => {
     } catch (e) {}
 }, 240000);
 
-const sessionDir = path.join(__dirname, "dark", "session");
-const pluginsPath = path.join(__dirname, "lord", "plugins");
+const sessionDir = path.join(__dirname, "ghost", "session");
+const pluginsPath = path.join(__dirname, "smurf", "plugins");
 
 let botSettings = {};
 async function loadBotSettings() {
